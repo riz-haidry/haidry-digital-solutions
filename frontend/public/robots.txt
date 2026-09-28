@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://haidry-digital-solutions.vercel.app/sitemap.xml
