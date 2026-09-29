@@ -33,7 +33,7 @@ haidry-digital-solutions/
 ## Setup
 
 1. Install frontend packages: `cd frontend && npm install`
-2. Copy `frontend/.env.example` to `frontend/.env`. Set `VITE_API_URL`; optionally set `VITE_WHATSAPP_NUMBER` to a country-code phone number using digits only.
+2. Copy `frontend/.env.example` to `frontend/.env`. Set `VITE_API_URL` to the backend API base URL (for example, `https://your-api-host/api`); the frontend adds `/api` if it is omitted. Optionally set `VITE_WHATSAPP_NUMBER` to a country-code phone number using digits only.
 3. Install API packages: `cd ../backend && npm install`
 4. Copy `backend/.env.example` to `backend/.env`. Set `MONGODB_URI`, a private `JWT_SECRET` of at least 32 characters, and admin name/email/password. Use a unique password of at least 12 characters.
 5. Create/update the admin account with `npm run create-admin` from `backend/`.

@@ -1,6 +1,9 @@
-const API_URL = (
+const configuredApiUrl = (
   import.meta.env.VITE_API_URL ?? "http://localhost:5000/api"
-).replace(/\/$/, "");
+).replace(/\/+$/, "");
+const API_URL = /\/api$/i.test(configuredApiUrl)
+  ? configuredApiUrl
+  : `${configuredApiUrl}/api`;
 
 export function resolveMediaUrl(mediaUrl) {
   if (!mediaUrl) return "";
