@@ -65,6 +65,7 @@ const customerRoutes = require('./routes/customerRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const path = require('node:path');
 const portfolioRoutes = require('./routes/portfolioRoutes');
+const ensureAdmin = require('./utils/ensureAdmin');
 
 const app = express();
 
@@ -109,9 +110,12 @@ app.use((error, req, res, next) => {
 });
 
 const port = Number(process.env.PORT) || 5000;
-connectDatabase().then(() => {
-  app.listen(port, () => console.info(`Haidry API listening on port ${port}`));
-}).catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+connectDatabase()
+  .then(() => ensureAdmin())
+  .then(() => {
+    app.listen(port, () => console.info(`Haidry API listening on port ${port}`));
+  })
+  .catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
